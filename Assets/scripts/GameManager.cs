@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
     public Button classfighterButton;
     public Button classtankButton;
     public Button classrogueButton;
-
+public GameObject classPanel;
+public GameObject fightPanel;
     private Player player;
     private Enemy enemy;
 
@@ -33,7 +34,8 @@ public class GameManager : MonoBehaviour
         attackButton.interactable = false;
         defendButton.interactable = false;
         healButton.interactable = false;
-
+classPanel.SetActive(true);
+fightPanel.SetActive(false);
         UpdateUI();
     }
 
@@ -44,6 +46,8 @@ public class GameManager : MonoBehaviour
         player.SetStats(150, 20, 5, 15);
         EnableActionButtons();
 UpdateUI();
+classPanel.SetActive(false);
+fightPanel.SetActive(true);
     }
 
     public void ChooseFighter()
@@ -51,6 +55,8 @@ UpdateUI();
         player.SetStats(120, 30, 15, 10);
         EnableActionButtons();
 UpdateUI();
+classPanel.SetActive(false);
+fightPanel.SetActive(true);
     }
 
     public void ChooseRogue()
@@ -58,6 +64,8 @@ UpdateUI();
         player.SetStats(100, 35, 25, 5);
         EnableActionButtons();
 UpdateUI();
+classPanel.SetActive(false);
+fightPanel.SetActive(true);
     }
 
     void EnableActionButtons()
@@ -88,12 +96,14 @@ UpdateUI();
     {
         player.Defend();
         EnemyTurn();
+UpdateUI();
     }
 
     public void PlayerHeal()
     {
         player.Heal();
         EnemyTurn();
+UpdateUI();
     }
 
     // ===== ENEMY TURN =====
