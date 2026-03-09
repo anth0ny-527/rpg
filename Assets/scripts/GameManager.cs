@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text playerHealthText;
     public TMP_Text enemyHealthText;
     public TMP_Text resultText;
-
+    public TMP_Text enemyTurn;
     public AudioSource audioSource;
     public AudioClip damageSound;
 
@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
     public Button classfighterButton;
     public Button classtankButton;
     public Button classrogueButton;
-public GameObject classPanel;
-public GameObject fightPanel;
+    public GameObject classPanel;
+    public GameObject fightPanel;
     private Player player;
     private Enemy enemy;
 
@@ -118,14 +118,17 @@ print("turn");
             int damage = enemy.Attack();
             player.TakeDamage(damage);
             audioSource.PlayOneShot(damageSound);
+enemyTurn.text = "Enemy attacked" ;
         }
         else if (action == 1) // Defend
         {
             enemy.Defend();
+enemyTurn.text = "Enemy defended" ;
         }
         else // Heal
         {
             enemy.Heal();
+enemyTurn.text = "Enemy healed" ;
         }
 
         if (player.IsDead())
